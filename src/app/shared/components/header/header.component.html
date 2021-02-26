@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span>
+            <div class="profile-card">
+                <img src="assets\img\CA.jpg" alt="Logo">
+            </div>
+             </span>
+             <p>Codevian Technologies</p>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </li>
+
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>help_outline</mat-icon>
+                    </button>
+                </li>
+
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            Sign Out
+                        </button>
+                    </mat-menu>
+                    
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+
+<!--     <div class="profile-card">
+        <div class="header">
+            <h2>Chandan Pal</h2>
+            <h4>palchandan773@gmail.com</h4>
+        </div>
+        <img src="assets\img\FB_IMG_1533057973468.jpg" alt="Chandan Pal">
+    </div> -->

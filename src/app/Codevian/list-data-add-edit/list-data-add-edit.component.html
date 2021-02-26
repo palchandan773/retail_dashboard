@@ -1,0 +1,82 @@
+<div class="mat-elevation-z8">
+    <button mat-raised-button color="primary" (click)="removeSelectedRows()">
+        Remove Selected Rows
+    </button>
+    <mat-table [dataSource]="dataSource" matSort>
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="Phone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{(element.Phone)|| 'NA'}} </mat-cell>
+        </ng-container>
+
+        <!-- city Column -->
+        <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.address.city}} </mat-cell>
+        </ng-container>
+
+
+        <!-- Address_1 Column -->
+        <ng-container matColumnDef="Address_1">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Address_1 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.address.Address_1}} </mat-cell>
+        </ng-container>
+
+        <!-- Address_2 Column -->
+        <ng-container matColumnDef="Address_2">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Address_2 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.address.Address_2}} </mat-cell>
+        </ng-container>
+
+        <!-- postal_code Column -->
+        <ng-container matColumnDef="postal_code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> postal_code </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.address.postal_code}} </mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef> Update </mat-header-cell>
+            <mat-cell *matCellDef="let element" class="action-link">
+
+                <button mat-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <!-- <mat-cell *matCellDef="let element" class="action-link">
+                
+                <button mat-raised-button (click)="removeColumn()"><mat-icon>delete</mat-icon></button>
+            </mat-cell> -->
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<br>

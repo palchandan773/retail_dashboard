@@ -1,0 +1,22 @@
+:host {
+  .mat-icon {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  h2 {
+    color: rgb(147, 170, 45);
+  }
+
+  .profile-card {
+    text-align: center;
+    padding: 0 10px 10px 10px;
+
+    img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+}
+// :host-context(.theme-light) 
